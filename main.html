@@ -1,16 +1,61 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-	<link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soundbar Application</title>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn {
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .stop {
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: red;
+      color: white;
+    }
+  </style>
 </head>
-
 <body>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
-</script>
+  <div id="buttons">
+    <button class="btn" onclick="playSound('sound1.mp3')">Sound 1</button>
+    <button class="btn" onclick="playSound('sound2.mp3')">Sound 2</button>
+    <button class="btn" onclick="playSound('sound3.mp3')">Sound 3</button>
+    <button class="stop" onclick="stopSound()">Stop</button>
+  </div>
 
+  <script>
+    let audio;
+
+    function playSound(soundFile) {
+      stopSound(); // Stop any currently playing sound
+      audio = new Audio(`sounds/${soundFile}`);
+      audio.play();
+    }
+
+    function stopSound() {
+      if (audio) {
+        audio.pause();
+        audio.currentTime = 0;
+      }
+    }
+  </script>
 </body>
-
 </html>
